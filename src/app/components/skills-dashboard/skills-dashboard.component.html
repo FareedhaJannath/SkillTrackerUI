@@ -1,0 +1,143 @@
+<script src="node_modules/chart.js/src/chart.js"></script>
+<div class="container" >
+	<div class="row">
+		<span style="padding-top:20px;font-weight:bold">Skills Tracker: Search Associate</span>
+	</div>	
+  <div class="row" style="border:1px solid;">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="col-md-12 " *ngFor="let chartModel of customChartModelArray;let i = index">
+              <div class="content">
+            <div class="ct-chart">               
+                  <canvas height="100%" baseChart [colors]="chartModel.chartColors"
+                  [datasets]="chartModel.barChartData" [labels]="chartModel.barChartLabels"
+                   [options]="chartModel.options" 
+                     [chartType]="chartModel.barChartType"
+                     ></canvas>
+              
+                  </div>
+                 </div>
+            </div>
+   </div>
+
+   
+</div>
+
+<div class="row">
+  <div class="col-md-3 col-sm-3 col-xs-3" style="font-size:10px; text-align:center">
+      <div class="floating-box">
+			<div class="well"><h3>{{summary.RegisteredCandidates}}</h3> Registered Candidates</div>            
+        </div>
+  </div>
+
+  <div class="col-md-3 col-sm-3 col-xs-3" style="font-size:10px; text-align:center">
+      <div class="floating-box">
+            <div class="well"><h3>{{summary.RatedCandidates}}%</h3>Candidates Rated</div>
+        </div>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
+  <div class="floating-box">
+            <div class="well"><h3>{{summary.MaleRatedCandidates}}%</h3>Male Candidates Rated</div>
+        </div>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
+   <div class="floating-box">
+            <div class="well"><h3>{{summary.FemaleRatedCandidates}}%</h3>Female Candidates Rated</div>
+        </div>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
+   <div class="floating-box">
+            <div class="well"><h3>{{summary.L1RatedCandidates}}%</h3>Level1 Candidates</div>
+        </div>
+ </div>
+ </div>
+
+<div class="row">
+  <div class="col-md-3 col-sm-3 col-xs-3" style="font-size:10px; text-align:center">
+	  <div class="floating-box">
+		<div class="well"><h3> {{summary.L3RatedCandidates}}% </h3>  Level3 Candidates</div>
+	  </div>
+  </div>
+
+  <div class="col-md-3 col-sm-3 col-xs-3" style="font-size:10px; text-align:center">
+  <div class="floating-box">
+      <div class="well"><h3>{{summary.L2RatedCandidates}}%</h3>Level2 Candidates</div>
+	  </div>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
+   <div class="floating-box">
+            <div class="well"><h3>{{summary.FresherCandidates}}%</h3>Candidates Freshers</div>
+        </div>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
+  <div class="floating-box">
+            <div class="well"><h3>{{summary.FemaleCandidates}}%</h3>Female Candidates</div>
+        </div>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
+  <div class="floating-box">
+            <div class="well"><h3>{{summary.MaleCandidates}}%</h3>Male Candidates</div>
+        </div>
+ </div>
+ </div>
+ 
+ 
+ 
+ 
+ 	
+	<div class="row">	
+
+	<table calss="table table-stripped table-responsive" style="padding-top:40px;width:100%;">
+        <thead class="tdHeader odd">
+            <!--<th>Pic</th>-->
+            <th>Status</th>
+			<th>
+				<input type="text" class="form-control form-control-sm" style="width:90%;" id="srchNameTxt" name="srchNameTxt" [(ngModel)]="srchNameTxt"  placeholder="Search by Name"></th>
+			<th>
+				<input type="text" class="form-control form-control-sm" style="width:70%;" id="srchAssociteIdTxt" name="srchAssociteIdTxt" [(ngModel)]="srchAssociteIdTxt"  placeholder="Search by Id"></th>
+			<th>
+				<input type="text" class="form-control form-control-sm" style="width:80%;" id="srchEmailTxt" name="srchEmailTxt" [(ngModel)]="srchEmailTxt"  placeholder="Search by Email"></th>
+			<th>Mobile
+				<!--<input type="text" class="form-control form-control-sm" style="width:70%;" id="srchMobileTxt" name="srchMobileTxt" [(ngModel)]="srchMobileTxt"  placeholder="Search by Mobile">--></th>
+			<th>
+				<input type="text" class="form-control form-control-sm" style="width:70%;" id="srchSkillTxt" name="srchSkillTxt" [(ngModel)]="srchSkillTxt"  placeholder="Search by Skill">	</th>	
+			<th> 
+				<button type="button" class="btn btn-warning form-control-sm" [routerLink]="['/AddAssociate']">Add Associate</button> </th>	
+        </thead>
+        <tbody>
+			<tr *ngFor="let associate of associateArray | associateFilter: srchNameTxt : srchAssociteIdTxt:srchEmailTxt:srchMobileTxt:srchSkillTxt;let i =index;let even = even; let odd = odd;"  [ngClass]="{ odd: odd, even: even }">                
+				<td class="tdData">
+				 <span *ngIf="associate.associateStatus=='Green'">
+                      <span class="fa fa-stop" style="color:green"></span>    
+                    </span>        
+                  <span *ngIf="associate.associateStatus=='Blue'"><span class="fa fa-stop" style="color:blue"> 
+                    </span>    
+                  </span>        
+                  <span *ngIf="associate.associateStatus=='Red'"><span class="fa fa-stop" style="color:red"> 
+                    </span>    
+                  </span> 
+				
+				</td>
+				<td class="tdData">{{associate.associateName}}</td>
+				<td class="tdData">{{associate.associateId}}</td>				
+				<td class="tdData">{{associate.emailAddress}}</td>
+				<td class="tdData">{{associate.mobileNumber}}</td>				
+				<td class="tdData">{{associate.assocSkills}}</td>	
+				<td> 
+				 <a class="btn btn-info"          
+                  [routerLink]="['/EditAssociate',associate._id]">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>  
+
+				  <a class="btn btn-danger"          
+                  (click)="deleteAssociate(associate)">
+                  <i class="fa fa-trash" aria-hidden="true"></i></a> 
+				  
+				  <a class="btn btn-info"          
+                  [routerLink]="['/ViewAssociate',associate._id]">
+                  <i class="fa fa-eye" aria-hidden="true"></i></a>				  
+					
+				</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+ </div>

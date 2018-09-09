@@ -1,0 +1,34 @@
+Project Checked into: http://172.18.2.18/Fareedha
+
+Project on Rest API: SkillTrackerApi
+Project on UI: SkillTrackerUI
+
+
+UI : Steps to Launch application:
+----------------------------------------------
+
+Technology Used: Bootstrap 4, HTML5, Angular JS 4
+
+Open command prompt
+
+From command prompt, Install angular cli using command : npm install -g @angular/cli
+
+npm install --save @angular/material @angular/cdk @angular/animations
+
+npm install --save hammerjs
+
+npm install ngx-bootstrap --save
+
+npm install ng2-charts --save
+
+npm install chart.js --save
+
+Navigate to SkillTrackerUI project package.json folder
+
+Execute command: npm install to get installed the node modules
+
+Execute ng serve --host 0.0.0.0 --port 4201 command to launch the application
+
+Application will be launched with url http://localhost:4201/
+
+By Default application will navigate to Skills Search/Dashboard

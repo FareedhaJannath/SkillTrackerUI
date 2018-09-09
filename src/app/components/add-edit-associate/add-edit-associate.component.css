@@ -1,0 +1,45 @@
+div.row{
+	border:0px solid;
+	padding-top:3px;
+	padding-left:0px;
+	padding-right:5px;
+	
+}
+div.inputTxt{
+	padding-left:0px;
+}
+
+label{
+	font-size:12px;
+	
+}
+.custom-btn-height{
+   margin-bottom:10px;
+}
+.custom-btn-width{
+    min-width:100px;
+}
+
+.btn-margin-right {
+    margin-right:5px;
+}
+
+.btn-highlight:hover {
+    border-color:black;
+    background-color:yellow;
+    color:black;
+}
+
+
+
+.btn-custom:hover,
+.btn-custom.active,
+.btn-custom.active:hover {
+  background-color: red;
+}
+.btn-custom {
+  border-color: red; 
+}
+.sliderClass{
+    width: 100%;
+}

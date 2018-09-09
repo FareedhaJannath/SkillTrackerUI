@@ -1,0 +1,205 @@
+ 
+<div class="container" style="padding-top:20px;">  
+  
+	<div class="card" style="border:1px solid;">
+      <div class="card-header" style="font-weight:bold;background-color:grey">Skills Tracker: {{pageTitle}} Employee Skills</div>
+      <div class="card-body">
+	  <form #associateForm="ngForm" (ngSubmit)="onFormSubmit(associateForm)">
+		<div class="row">
+		<div class="col-sm-4 col-xs-4 col-md-4" >
+		<div class="row">
+			<div  class="col-sm-6 col-xs-6 col-md-6">
+				<label for="associateName">Name</label></div>
+			<div class="col-sm-6 col-xs-6 col-md-6 inputTxt">			
+				<input type="text" class="form-control form-control-sm" [(ngModel)]="associate.name" name="associateName" id="associateName"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-xs-6 col-md-6"><label for="associateId">Associate Id</label></div>
+			<div class="col-sm-6 col-xs-6 col-md-6 inputTxt">
+				<input type="number" [(ngModel)]="associate.associateId"  maxlength="6" class="form-control form-control-sm" name="associateId" id="associateId"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-xs-6 col-md-6"><label for="email">Email</label></div>
+			<div class="col-sm-6 col-xs-6 col-md-6 inputTxt"><input [(ngModel)]="associate.email" type="email" class="form-control form-control-sm"  name="assEmail" id="assEmail"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-xs-6 col-md-6"><label for="mobile">Mobile</label></div>
+			<div class="col-sm-6 col-xs-6 col-md-6 inputTxt">
+			<input type="number" [(ngModel)]="associate.mobile" class="form-control form-control-sm"  name="mobile" id="mobile"></div>
+		</div>	
+	</div>
+	
+    <div class="col-sm-3 col-xs-3 col-md-3" >
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12" >				
+				<input type="file" name="assPrflPic" style="width:90%;" (change)="showPreviewImage($event)">
+			</div>	
+		</div>	
+		<div class="row" >
+			<div class="col-sm-12 col-xs-12 col-md-12">
+				<img [src]="localUrl" style="width:90%;height:90%" *ngIf="localUrl" class="imgPlaceholder">				
+				
+			</div>	
+		 </div>	
+	</div>	
+	<div class="col-sm-1 col-xs-1 col-md-1">
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12" >			
+			<label class="btn btn-outline-success">
+				<input type="radio" name="associateStatus" id="option1" value="Green" [ngModel]="associate.associateStatus" autocomplete="off" checked> Green
+			  </label>			  
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12" >
+			
+			  <label class="btn btn-outline-danger">
+				<input type="radio" name="associateStatus" id="option3" value="Red" [ngModel]="associate.associateStatus" autocomplete="off"> Red
+			  </label>
+			
+			</div>								
+		</div>		
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12" >
+				 <label class="btn btn-outline-primary">
+					<input type="radio" name="associateStatus" id="option2"value="Blue" [ngModel]="associate.associateStatus" autocomplete="off"> Blue
+				  </label>
+			</div>								
+		</div>		
+	</div>	
+	<div class="col-sm-1 col-xs-1 col-md-1">
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12" >			
+			<label class="btn btn-outline-secondary">
+				<input type="radio" name="associateLevel" id="assLevel1" autocomplete="off" value="L1" [ngModel]="associate.associateLevel"> L1
+			  </label>		
+        
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12" >
+				   <label class="btn btn-outline-secondary">
+				<input type="radio" name="associateLevel" id="assLevel2" value="L2" [ngModel]="associate.associateLevel" autocomplete="off"> L2
+			  </label>		
+     
+			</div>								
+		</div>		
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12" >
+			<label class="btn btn-outline-secondary">
+				<input type="radio" name="associateLevel" id="assLevel3" value="L3" [ngModel]="associate.associateLevel" autocomplete="off"> L3
+			  </label>		
+			</div>								
+		</div>		
+	</div>	
+	
+	<div class="col-sm-3 col-xs-3 col-md-3" >	
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12" >
+				<label for="remarks">Remarks:</label>
+			</div>	
+		</div>	
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12" >
+				<textarea class="form-control" [(ngModel)]="associate.remarks" name="remarks" rows="4" id="remarks"></textarea>				
+			</div>	
+		 </div>	
+	</div>		
+  </div>
+	  <div class="row">
+    <div class="col-sm-10 col-xs-10 col-md-10" >
+		<label style="font-weight:bold">Skills:</label>  
+	</div>  
+	<div class="col-sm-2 col-xs-2 col-md-2" >
+		<a class="btn btn-secondary"          
+                  [routerLink]="['/Skills']">
+                  	Add Skills</a>
+	</div>  
+	
+	</div>
+  
+  <!--<div class="row">
+    <div class="col-sm-2 col-xs-2 col-md-2" >
+		<label>Skills:</label>  
+	</div> 
+	<div class="col-sm-3 col-xs-3 col-md-3 inputTxt" >
+		<input type="text" placeholder="Search Skill(Auto Filter)" class="form-control form-control-sm"  id="skillsTxt">
+	</div> 
+	<div class="col-sm-2 col-xs-2 col-md-2" >
+		<label >Add Skill:</label>  
+	</div> 
+	<div class="col-sm-3 col-xs-3 col-md-4 inputTxt"  >
+		<input type="text" placeholder="Skill Name" class="form-control form-control-sm"  id="skillNmTxt">
+	</div> 
+	<div class="col-sm-1 col-xs-1 col-md-1" >
+		<button type="button" class="btn btn-secondary">Add</button>
+	</div> 	
+  </div>-->
+  
+<div class="container" style="column-count:2">   
+	<div  *ngFor="let skill of skillsArray;let i=index;let even = even; let odd = odd;">
+			<div class="row">
+						<div class="col-sm-2 col-xs-2 col-md-8" style="width:20%">
+							<label >{{skill.skillName}}</label>  
+							
+						</div> 
+						<div class="col-sm-2 col-xs-2 col-md-8"  style="width:80% !important" >		
+					
+							<mat-slider 
+									thumbLabel
+									[displayWith]="formatLabel"
+									tickInterval="1"
+									min="0"
+									max="20"
+									class="sliderClass"
+									[name]="i"
+									[(ngModel)]="skill.skillRating">{{skill.skillRating}}</mat-slider>
+							
+						</div>		
+		    </div>	   
+	   </div>	   
+	</div>
+
+ <div class="row">	
+	<div class="col-sm-1 col-xs-1 col-md-2" >
+		<label for="strengthTxt">Strength:</label>  
+	</div>  
+	<div class="col-sm-5 col-xs-5 col-md-4 inputTxt" >
+		<input type="text" [(ngModel)]="associate.strength" class="form-control" name="associateStrength" id="associateStrength">
+	</div>  
+	<div class="col-sm-2 col-xs-3 col-md-2" >
+		<label for="weaknessTxt">Weakness:</label>  
+	</div>  
+	<div class="col-sm-4 col-xs-3 col-md-4 inputTxt" >
+		<input type="text" [(ngModel)]="associate.weakness" class="form-control" name="associateWeakness" id="associateWeakness"> 
+	</div>
+  </div>
+  
+  <div class="row" >
+	  <div class="col-md-6 offset-md-2" ><span style="color:red">{{errorMsg}}</span>
+	  <span style="color:green">{{successMsg}}</span>
+	  </div>
+	  <div class="col-md-1 "><button type="button" (click)="resetAddEdit(associateForm)" class="btn btn-info">Reset</button>
+	  </div>
+	  <div class="col-md-1"><button type="button" (click)="cancelAddEdit()" class="btn btn-warning">Cancel</button>
+	  </div>
+	  <div class="col-md-2"><button class="btn btn-info">Save</button>
+	  </div>  
+  </div>
+  </form>
+ 	   </div> 
+    </div>
+</div>
+
+
+<script language="javascript">
+	document.getElementById("files").onchange = function () {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			// get loaded data and render thumbnail.
+			document.getElementById("image").src = e.target.result;
+		};
+		// read the image file as a data URL.
+		reader.readAsDataURL(this.files[0]);
+	};
+</script>
