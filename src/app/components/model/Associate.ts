@@ -8,6 +8,7 @@ export class Associate {
 	name:string;
 	email: string;
 	mobile: number;
+	gender:string;
 	strength: string;
 	weakness: string;
 	remarks: string;

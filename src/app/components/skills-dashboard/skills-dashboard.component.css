@@ -1,5 +1,5 @@
 .tdData{
-	font-size:10px;
+	font-size:14px;
 }
 
 .tdHeader th{
@@ -20,7 +20,7 @@ table td { word-wrap:break-word;}
 
 .floating-box {  
   float: left;
-  width: 133px;
+  width: 120px;
   height: 75px;
   margin: 1px;  
   margin-bottom: 15px;

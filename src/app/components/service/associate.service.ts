@@ -54,10 +54,9 @@ export class AssociateService {
 
 	/** PUT: update the Associate on the server */
 	updateAssociate (associate:Associate): Observable<any> {
-	   const url = `${this.updateAssociateUrl}/${associate._id}`;
-	   console.log("Associate url....."+url);
-	   return this.http.put(url, associate, httpOptions).pipe(
-		 tap(_ => console.log(`updated skill id=${associate._id}`))
+    console.log("update Associate"+associate);
+	   return this.http.put(this.updateAssociateUrl, associate, httpOptions).pipe(
+		 tap(_ => console.log(`updated skill id=${associate.associateId}`))
 		 //,
 		 //catchError(this.handleError<any>('updateAssociate'))
 	   );

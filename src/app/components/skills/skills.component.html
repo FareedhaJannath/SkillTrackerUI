@@ -1,6 +1,6 @@
-<div class="container" style="padding-top:20px;">  
+<div class="container" style="padding-top:20px;padding-left:100px;">  
   <div class="card">
-      <div class="card-header" style="font-weight:bold;background-color:#F0F8FF">Skills Tracker: Add Skill Page</div>
+      <div class="card-header" style="font-weight:bold;background-color:grey">Skills Tracker: Add Skill Page</div>
       <div class="card-body">	  
 		<div *ngIf="error!=null" class="row alert alert-danger">{{error}}</div>
 		
@@ -9,12 +9,14 @@
 			 <label for="srchSkillsTxt" style="font-weight:bold;">Add Skill:</label>	
 			</div>
 			
-			<div class="col-md-6 col-sm-6 col-xs-6">		
+			<div class="col-md-7 col-sm-7 col-xs-6">		
 				<input type="text" class="form-control" id="srchSkillsTxt" name="srchSkillsTxt" [(ngModel)]="newSkillName"  placeholder="Skill Name">		
 			</div>
 			
-			<div class="col-md-4 col-sm-4 col-xs-4">		
-				<button type="button" class="btn btn-secondary" (click)="addSkill()">Add</button>
+			<div class="col-sm-1">		
+				<button type="button" class="btn btn-secondary pull-right" (click)="addSkill()">Add</button>
+			</div>
+			<div class="col-sm-1">
 				<a class="btn btn-secondary"          
                   [routerLink]="['/skillsDashboard']">
                   	Cancel</a>
@@ -27,14 +29,14 @@
 	
 	<div *ngFor="let skill of skillsArray">
 	  <div class="row" id="inner-content-3" style="padding:5px 5px 5px;">		
-		<div class="col-md-8 col-sm-8 col-xs-8">
-			<input type="hidden" class="form-control" id="skillId" name="skillId" [(ngModel)]="skill._id">
+		<div class="col-md-9 col-sm-9 col-xs-9">
+			<input type="hidden" class="form-control" id="skillId" name="skillId" [(ngModel)]="skill.skillId">
 			<input type="text" class="form-control" id="skillNm" name="skillName" [(ngModel)]="skill.skillName">
 		</div>		
-		<div class="col-md-2 col-sm-2 col-xs-2">
-			<button id="btn2" class="btn btn-info  btn-md" (click)="updateSkill(skill)">Edit</button>
+		<div class="col-sm-1">
+			<button id="btn2" class="btn btn-info  btn-md pull-right" (click)="updateSkill(skill)">Edit</button>
 		</div>
-		<div class="col-md-2 col-sm-2 col-xs-2" >
+		<div class="col-sm-1"	>
 			<button id="btn2" class="btn btn-info  btn-md" (click)="deleteSkill(skill)">Delete</button>
 		</div>
 	 </div>

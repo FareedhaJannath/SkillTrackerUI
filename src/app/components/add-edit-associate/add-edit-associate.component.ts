@@ -132,7 +132,8 @@ export class AddEditAssociateComponent implements OnInit {
 			
 		if(this.associate!=null){
 			this.associate.associateStatus=associateForm.controls['associateStatus'].value;
-			this.associate.associateLevel=associateForm.controls['associateLevel'].value		
+			this.associate.associateLevel=associateForm.controls['associateLevel'].value	
+			this.associate.gender= associateForm.controls['gender'].value;	
 		}
 		
 	    if(this.skillsArray!=null){			
@@ -159,7 +160,7 @@ export class AddEditAssociateComponent implements OnInit {
 		if(!this.isEditAssociate){			 									
 			this.associateService.saveAssociate(this.associate)
 				  .subscribe(associate => {				   
-					  console.log("Associate Saved"+this.associate._id);
+					  console.log("Associate Saved"+this.associate.associateId);
 					 //this.router.navigate(['/skillsDashboard/']);
 			 });
 			 

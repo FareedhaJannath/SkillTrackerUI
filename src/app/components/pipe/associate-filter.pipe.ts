@@ -10,19 +10,19 @@ transform(items:any, nameSearch: string,associateIdSearch:string, emailSearch: s
         
         return items.filter(item =>{
 
-            if (nameSearch && item.associateName.toLowerCase().indexOf(nameSearch.toLowerCase()) === -1){
+            if (nameSearch && item.name.toLowerCase().indexOf(nameSearch.toLowerCase()) === -1){
                 return false;
             }
             if (associateIdSearch && item.associateId.toString().indexOf(associateIdSearch) === -1){
               return false;
             }
-            if (emailSearch && item.emailAddress.toLowerCase().indexOf(emailSearch.toLowerCase()) === -1){
+            if (emailSearch && item.email.toLowerCase().indexOf(emailSearch.toLowerCase()) === -1){
                 return false;
             }
-            if (mobileSearch && item.mobileNumber.toString().indexOf(mobileSearch) === -1){
+            if (mobileSearch && item.mobile.indexOf(mobileSearch) === -1){
                 return false;
             }
-			if (skillSearch && item.assocSkills.toString().toLowerCase().indexOf(skillSearch) === -1){
+			if (skillSearch && item.assocSkills.toLowerCase().indexOf(skillSearch) === -1){
                 return false;
             }
            

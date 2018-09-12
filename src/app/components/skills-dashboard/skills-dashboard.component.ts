@@ -50,7 +50,9 @@ export class SkillsDashboardComponent implements OnInit {
 			for(var cnt=0;cnt<this.associateArray.length;cnt++){				
 				if(this.associateArray[cnt].associateSkills!==null){
 					let assocSkills="";
-					for(var i=0;i<this.associateArray[cnt].associateSkills.length;i++){				assocSkills+=this.associateArray[cnt].associateSkills[i].skill.skillName+",";						
+         // console.log(this.associateArray[cnt].associateSkills);
+					for(var i=0;i<this.associateArray[cnt].associateSkills.length;i++){				
+            assocSkills+=this.associateArray[cnt].associateSkills[i].skill.skillName+",";						
 					}
 					this.associateArray[cnt].assocSkills=assocSkills;				
 				}				

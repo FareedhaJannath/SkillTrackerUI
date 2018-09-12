@@ -1,5 +1,5 @@
  
-<div class="container" style="padding-top:20px;">  
+<div class="container" style="padding-top:20px;padding-left:100px;">  
   
 	<div class="card" style="border:1px solid;">
       <div class="card-header" style="font-weight:bold;background-color:grey">Skills Tracker: {{pageTitle}} Employee Skills</div>
@@ -8,7 +8,7 @@
 		<div class="row">
 		<div class="col-sm-4 col-xs-4 col-md-4" >
 		<div class="row">
-			<div  class="col-sm-6 col-xs-6 col-md-6">
+			<div  class="col-sm-6 col-xs-6 col-md-6">	
 				<label for="associateName">Name</label></div>
 			<div class="col-sm-6 col-xs-6 col-md-6 inputTxt">			
 				<input type="text" class="form-control form-control-sm" [(ngModel)]="associate.name" name="associateName" id="associateName"></div>
@@ -27,6 +27,13 @@
 			<div class="col-sm-6 col-xs-6 col-md-6 inputTxt">
 			<input type="number" [(ngModel)]="associate.mobile" class="form-control form-control-sm"  name="mobile" id="mobile"></div>
 		</div>	
+		<div class="row">
+			<div class="col-sm-6 col-xs-6 col-md-6"><label for="mobile">Gender</label></div>
+			<div class="col-sm-6 col-xs-6 col-md-6 inputTxt">
+				<input type="radio" name="gender" id="optiongender" value="M" [ngModel]="associate.gender" autocomplete="off" checked> Male
+				<input type="radio" name="gender" id="optiongender" value="F" [ngModel]="associate.gender" autocomplete="off" checked> Female
+	   	</div>	
+    </div>
 	</div>
 	
     <div class="col-sm-3 col-xs-3 col-md-3" >
@@ -136,14 +143,18 @@
 	</div> 	
   </div>-->
   
-<div class="container" style="column-count:2">   
-	<div  *ngFor="let skill of skillsArray;let i=index;let even = even; let odd = odd;">
-			<div class="row">
-						<div class="col-sm-2 col-xs-2 col-md-8" style="width:20%">
+<div class="container">   
+
+	<div class="row">
+	
+				<div class="col-xs-12 col-md-6" *ngFor="let skill of skillsArray;let i=index;">
+
+					<div class="row">
+						<div class="col-sm-4 col-xs-12 col-md-4">
 							<label >{{skill.skillName}}</label>  
 							
 						</div> 
-						<div class="col-sm-2 col-xs-2 col-md-8"  style="width:80% !important" >		
+						<div class="col-sm-8 col-xs-12 col-md-8" >		
 					
 							<mat-slider 
 									thumbLabel
@@ -156,9 +167,14 @@
 									[(ngModel)]="skill.skillRating">{{skill.skillRating}}</mat-slider>
 							
 						</div>		
-		    </div>	   
-	   </div>	   
+   
+
+				</div>
+				</div>
+   </div>
 	</div>
+
+
 
  <div class="row">	
 	<div class="col-sm-1 col-xs-1 col-md-2" >

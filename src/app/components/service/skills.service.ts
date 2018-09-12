@@ -39,7 +39,7 @@ export class SkillsService {
 
 	/** PUT: update the skill on the server */
 	updateSkill (skill:Skill): Observable<any> {
-	   const url = `${this.updateSkillUrl}/${skill.skillId}`;
+	   const url = `${this.updateSkillUrl}/`;
 	  // console.log("skill url....."+url);
 	   return this.http.put(url, skill, httpOptions).pipe(
 		 tap(_ => console.log(`updated skill id=${skill.skillId}`))
