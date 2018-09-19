@@ -2,7 +2,7 @@ import {Skill} from './Skill';
 
 export class AssociateSkills {	
 	constructor() {}
-	_id:string;    
+	associateSkillId:number;    
 	associateId:string;
 	skill:Skill;
 	skillRating:number;	

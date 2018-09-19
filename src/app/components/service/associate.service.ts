@@ -10,6 +10,7 @@ import { of } from 'rxjs/observable/of';*/
 import { catchError, retry, map, tap } from 'rxjs/operators';
 
 import { Associate} from '../model/Associate';
+import {Summary} from '../model/Summary';
 import { Skill} from '../model/Skill';
 
 import { AppSettings} from '../shared/AppSettings';
@@ -23,6 +24,7 @@ export class AssociateService {
     private hostName= AppSettings.API_ENDPOINT;
 	private getAllSkillsUrl = this.hostName+'Skills/';
 	private getAllAssociatesUrl = this.hostName+'Associate/';
+	private getAllAssociateSummaryUrl = this.hostName+'Associate/summary';
 	private getAssociateDetailsURL = this.hostName+'Associate';
 	private updateAssociateUrl = this.hostName+'Associate';	
 	private saveAssociateUrl = this.hostName+'Associate/';
@@ -30,6 +32,7 @@ export class AssociateService {
 	
 	skillsArray:Skill[];
 	associatesArray:Associate[];
+	summary:Summary;
   
 	constructor(private http: HttpClient) { }
 		  
@@ -79,9 +82,17 @@ export class AssociateService {
 		  //catchError(this.handleError('getAllAssociates', []))		  
 		);
 	}
+	/** GET associates Summary from the Rest API server */
+	getAllAssociateSummary(): Observable<Summary> {
+	  return this.http.get<Summary>(this.getAllAssociateSummaryUrl).pipe(
+		  tap(summary => console.log(summary))
+			//,
+		  //catchError(this.handleError('getAllAssociates', []))		  
+		);
+	}
 	/** DELETE: delete the Associate from the server */
 	deleteAssociate(associate:Associate): Observable<any> {
-	    const url = `${this.deleteAssociateUrl}/${associate._id}`;
+	    const url = `${this.deleteAssociateUrl}/${associate.associateId}`;
 	    console.log("associate url....."+url);	
 	    return this.http.delete<Associate>(url, httpOptions).pipe(
 		tap(_ => console.log('Deleted associate successfully'))

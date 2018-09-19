@@ -4,86 +4,54 @@
 		<span style="padding-top:20px;font-weight:bold">Skills Tracker: Search Associate</span>
 	</div>	
   <div class="row" style="border:1px solid;">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="col-md-12 " *ngFor="let chartModel of customChartModelArray;let i = index">
-              <div class="content">
-            <div class="ct-chart">               
-                  <canvas height="100%" baseChart [colors]="chartModel.chartColors"
-                  [datasets]="chartModel.barChartData" [labels]="chartModel.barChartLabels"
-                   [options]="chartModel.options" 
-                     [chartType]="chartModel.barChartType"
-                     ></canvas>
-              
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-12 " *ngFor="let chartModel of customChartModelArray;let i = index">
+            <div class="content">
+              <div class="ct-chart">               
+                    <canvas height="100%" baseChart [colors]="chartModel.chartColors"
+                    [datasets]="chartModel.barChartData" [labels]="chartModel.barChartLabels"
+                    [options]="chartModel.options" 
+                      [chartType]="chartModel.barChartType"
+                      ></canvas>
+                
+                    </div>
                   </div>
-                 </div>
-            </div>
-   </div>
-
-   
-</div>
+              </div>
+       </div>
+  </div>
 
 <div class="row">
-  <div class="col-md-3 col-sm-3 col-xs-3" style="font-size:10px; text-align:center">
-      <div class="floating-box">
-			<div class="well"><h3>{{summary.RegisteredCandidates}}</h3> Registered Candidates</div>            
-        </div>
-  </div>
-
-  <!--<div class="col-md-3 col-sm-3 col-xs-3" style="font-size:10px; text-align:center">
-      <div class="floating-box">
-            <div class="well"><h3>{{summary.RatedCandidates}}%</h3>Candidates Rated</div>
-        </div>
-  </div>-->
-  
-  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
-   <div class="floating-box">
-            <div class="well"><h3>{{summary.FemaleRatedCandidates}}%</h3>Female Candidates Rated</div>
-        </div>
-  </div>
-  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
-  <div class="floating-box">
-            <div class="well"><h3>{{summary.MaleRatedCandidates}}%</h3>Male Candidates Rated</div>
-        </div>
-  </div>
-  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
-   <div class="floating-box">
-            <div class="well"><h3>{{summary.L1RatedCandidates}}%</h3>Level1 Candidates</div>
-        </div>
+      <div class="col-md-2 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+          <h5>{{summary.associatesCount}}</h5> Registered Candidates             
+      </div>
+       <div class="col-md-1 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+            <h5>{{summary.femalePercentage}}%</h5>Female Candidates 
+      </div>
+      <div class="col-md-1 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+          <h5>{{summary.malePercentage}}%</h5>Male Candidates 
+      </div>
+      <div class="col-md-1 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+              <h5>{{summary.freshersPercentage}}%</h5>Candidates Freshers 
+      </div>
+      <div class="col-md-2 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+          <h5>{{summary.ratedAssociatesCount}}%</h5>Candidates Rated 
+      </div> 
+      <div class="col-md-1 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+          <h5>{{summary.femaleRatedPercentage}}%</h5>Female Candidates Rated
+      </div>
+      <div class="col-md-1 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+          <h5>{{summary.maleRatedPercentage}}%</h5>Male Candidates Rated 
+      </div>     
+       <div class="col-md-1 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+          <h5>{{summary.level1Percentage}}%</h5>Level1 Candidates 
+      </div>
+       <div class="col-md-1 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+          <h5>{{summary.level2Percentage}}%</h5>Level2 Candidates 
+      </div>
+       <div class="col-md-1 col-sm-1 col-xs-1" style="font-size:11px; text-align:center">
+          <h5>{{summary.level3Percentage}}% </h5>  Level3 Candidates 
+      </div>
  </div>
- </div>
-
-<div class="row">
-  <div class="col-md-3 col-sm-3 col-xs-3" style="font-size:10px; text-align:center">
-	  <div class="floating-box">
-		<div class="well"><h3> {{summary.L3RatedCandidates}}% </h3>  Level3 Candidates</div>
-	  </div>
-  </div>
-
-  <div class="col-md-3 col-sm-3 col-xs-3" style="font-size:10px; text-align:center">
-  <div class="floating-box">
-      <div class="well"><h3>{{summary.L2RatedCandidates}}%</h3>Level2 Candidates</div>
-	  </div>
-  </div>
-  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
-   <div class="floating-box">
-            <div class="well"><h3>{{summary.FresherCandidates}}%</h3>Candidates Freshers</div>
-        </div>
-  </div>
-  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
-  <div class="floating-box">
-            <div class="well"><h3>{{summary.FemaleCandidates}}%</h3>Female Candidates</div>
-        </div>
-  </div>
-  <div class="col-md-2 col-sm-2 col-xs-2" style="font-size:10px; text-align:center">
-  <div class="floating-box">
-            <div class="well"><h3>{{summary.MaleCandidates}}%</h3>Male Candidates</div>
-        </div>
- </div>
- </div>
- 
- 
- 
- 
  	
 	<div class="row">	
 

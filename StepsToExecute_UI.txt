@@ -23,6 +23,12 @@ npm install ng2-charts --save
 
 npm install chart.js --save
 
+npm install --save-dev karma-teamcity-reporter
+
+Add require('karma-teamcity-reporter') to list of plugins in karma.conf.js
+
+ng test --code-coverage --reporters=teamcity,coverage-istanbul
+
 Navigate to SkillTrackerUI project package.json folder
 
 Execute command: npm install to get installed the node modules

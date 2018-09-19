@@ -4,7 +4,7 @@
 	<div class="card" style="border:1px solid;">
       <div class="card-header" style="font-weight:bold;background-color:grey">Skills Tracker: {{pageTitle}} Employee Skills</div>
       <div class="card-body">
-	  <form #associateForm="ngForm" (ngSubmit)="onFormSubmit(associateForm)">
+	  <form #associateForm="ngForm" class="ngForm" (ngSubmit)="onFormSubmit(associateForm)">
 		<div class="row">
 		<div class="col-sm-4 col-xs-4 col-md-4" >
 		<div class="row">
@@ -16,7 +16,7 @@
 		<div class="row">
 			<div class="col-sm-6 col-xs-6 col-md-6"><label for="associateId">Associate Id</label></div>
 			<div class="col-sm-6 col-xs-6 col-md-6 inputTxt">
-				<input type="number" [(ngModel)]="associate.associateId"  maxlength="6" class="form-control form-control-sm" name="associateId" id="associateId"></div>
+				<input type="number" [(ngModel)]="associate.associateId"   class="form-control form-control-sm" name="associateId" id="associateId"></div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6 col-xs-6 col-md-6"><label for="email">Email</label></div>
@@ -53,7 +53,7 @@
 		<div class="row">
 			<div class="col-sm-12 col-xs-12 col-md-12" >			
 			<label class="btn btn-outline-success">
-				<input type="radio" name="associateStatus" id="option1" value="Green" [ngModel]="associate.associateStatus" autocomplete="off" checked> Green
+				<input type="radio" name="associateStatus" id="green" value="Green" [ngModel]="associate.associateStatus" autocomplete="off" checked> Green
 			  </label>			  
 			</div>
 		</div>
@@ -61,7 +61,7 @@
 			<div class="col-sm-12 col-xs-12 col-md-12" >
 			
 			  <label class="btn btn-outline-danger">
-				<input type="radio" name="associateStatus" id="option3" value="Red" [ngModel]="associate.associateStatus" autocomplete="off"> Red
+				<input type="radio" name="associateStatus" id="red" value="Red" [ngModel]="associate.associateStatus" autocomplete="off"> Red
 			  </label>
 			
 			</div>								
@@ -69,7 +69,7 @@
 		<div class="row">
 			<div class="col-sm-12 col-xs-12 col-md-12" >
 				 <label class="btn btn-outline-primary">
-					<input type="radio" name="associateStatus" id="option2"value="Blue" [ngModel]="associate.associateStatus" autocomplete="off"> Blue
+					<input type="radio" name="associateStatus" id="blue" value="Blue" [ngModel]="associate.associateStatus" autocomplete="off"> Blue
 				  </label>
 			</div>								
 		</div>		
@@ -108,7 +108,7 @@
 		</div>	
 		<div class="row">
 			<div class="col-sm-12 col-xs-12 col-md-12" >
-				<textarea class="form-control" [(ngModel)]="associate.remarks" name="remarks" rows="4" id="remarks"></textarea>				
+				<textarea class="form-control" [(ngModel)]="associate.remark" name="remarks" rows="4" id="remarks"></textarea>				
 			</div>	
 		 </div>	
 	</div>		
@@ -163,8 +163,10 @@
 									min="0"
 									max="20"
 									class="sliderClass"
-									[name]="i"
-									[(ngModel)]="skill.skillRating">{{skill.skillRating}}</mat-slider>
+									[(ngModel)]="skill.skillRating"
+									name="skillRating"
+									ngDefaultControl
+									>{{skill.skillRating}}</mat-slider>
 							
 						</div>		
    
@@ -199,7 +201,7 @@
 	  </div>
 	  <div class="col-md-1"><button type="button" (click)="cancelAddEdit()" class="btn btn-warning">Cancel</button>
 	  </div>
-	  <div class="col-md-2"><button class="btn btn-info">Save</button>
+	  <div class="col-md-2"><button id="addButton" class="btn btn-info addButton">Save</button>
 	  </div>  
   </div>
   </form>

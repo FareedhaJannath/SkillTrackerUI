@@ -9,24 +9,33 @@ transform(items:any, nameSearch: string,associateIdSearch:string, emailSearch: s
     if (items && items.length){
         
         return items.filter(item =>{
+            let nameResult: boolean = true;
+            let idResult: boolean = true;
+            let emailResult: boolean = true;
+            let mobileResult: boolean = true;
+            let skillResult: boolean = true;
 
-            if (nameSearch && item.name.toLowerCase().indexOf(nameSearch.toLowerCase()) === -1){
-                return false;
+            if (nameSearch){
+              nameResult= item.name.toLowerCase().includes(nameSearch.toLowerCase());
+             }
+            if (associateIdSearch){  
+              idResult= item.associateId.toString().includes(associateIdSearch);
             }
-            if (associateIdSearch && item.associateId.toString().indexOf(associateIdSearch) === -1){
-              return false;
+            if (emailSearch ){
+             emailResult=   item.email.toLowerCase().includes(emailSearch.toLowerCase());
             }
-            if (emailSearch && item.email.toLowerCase().indexOf(emailSearch.toLowerCase()) === -1){
-                return false;
+            
+            if (mobileSearch){
+                 let text: string = item.mobile.toString();
+               mobileResult=   text.includes(mobileSearch) ;
             }
-            if (mobileSearch && item.mobile.indexOf(mobileSearch) === -1){
-                return false;
+			if (skillSearch){
+               skillResult=     item.assocSkills.toLowerCase().indexOf(skillSearch);
             }
-			if (skillSearch && item.assocSkills.toLowerCase().indexOf(skillSearch) === -1){
-                return false;
-            }
-           
+        if(nameResult && idResult && emailResult && mobileResult && skillResult){
             return true;
+         }
+         return false;
        })
     }
     else{
@@ -34,35 +43,4 @@ transform(items:any, nameSearch: string,associateIdSearch:string, emailSearch: s
     }
 }
 
-
-/*
-transform(items: any, filter: any, isAnd: bool): any {
-    if (filter && Array.isArray(items)) {
-      let filterKeys = Object.keys(filter);
-      if (isAnd) {
-        return items.filter(item =>
-            filterKeys.reduce((memo, keyName) =>
-                (memo && new RegExp(filter[keyName], 'gi').test(item[keyName])) || filter[keyName] === "", true));
-      } else {
-        return items.filter(item => {
-          return filterKeys.some((keyName) => {
-            console.log(keyName);
-            return new RegExp(filter[keyName], 'gi').test(item[keyName]) || filter[keyName] === "";
-          });
-        });
-      }
-    } else {
-      return items;
-    }
-  }*/
-  
-  /*transform(items: any[], searchText: string): any {
-		if(!items) return [];
-		if(!searchText) return items;	
-		searchText = searchText.toLowerCase();        	
-		return items.filter( it => {
-			console.log(it.associateName);
-			return it.associateName.toLowerCase().includes(searchText);
-		});
-    }*/
 }

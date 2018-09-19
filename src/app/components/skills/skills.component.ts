@@ -45,7 +45,7 @@ export class SkillsComponent implements OnInit {
 	  console.log("this.skill   "+this.skill);
 	  this.skillsService.saveSkill(this.skill)
       .subscribe(skill => {
-		  this.newSkillName="";
+		  //this.newSkillName="";
 		  this.skillsArray.push(skill);
 		  console.log("skill saved");        
       });

@@ -18,10 +18,10 @@ import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms
 export class AddEditAssociateComponent implements OnInit {
   
   
-  associateForm = new FormGroup({
+ /* associateForm = new FormGroup({
 	associateStatus: new FormControl(),
 	associateLevel: new FormControl()
-  }); 
+  }); */
 
   pageTitle:string;
   associateId:string;
@@ -38,8 +38,8 @@ export class AddEditAssociateComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
   successMsg:string;
   
-  onFormSubmit(associateForm: NgForm) {        
-		this.addEditAssociate(associateForm);
+  onFormSubmit() {        
+		this.addEditAssociate();
 	}
 
 	constructor(private associateService:AssociateService, private router:Router,private route:	ActivatedRoute) {
@@ -98,18 +98,37 @@ export class AddEditAssociateComponent implements OnInit {
 	   this.associateService.getAssociateDetails(id).subscribe(data => { 
 		 this.associate=data;
 		 this.populateSkillRating();
+		 if(this.associate.level1=="L1"){
+			 this.associate.associateLevel="L1";
+		 }
+		  if(this.associate.level2=="L2"){
+			 this.associate.associateLevel="L2";
+		 }
+		 if(this.associate.level3=="L3"){
+			 this.associate.associateLevel="L3";
+		 }
+		 if(this.associate.statusBlue=="Y"){
+			 this.associate.associateStatus="Blue";
+		 }
+		 if(this.associate.statusRed=="Y"){
+			 this.associate.associateStatus="Red";
+		 }
+		  if(this.associate.statusGreen=="Y"){
+			 this.associate.associateStatus="Green";
+		 }
 		 console.log("Skill Rating:>>>>>"+JSON.stringify(this.skillsArray));		 
 	  });  
 	  
 	} 
 	populateSkillRating(){
 		let id:string;		
+		this.associateSkillsArray=this.associate.associateSkills;
 		for(var cnt=0;cnt<this.skillsArray.length;cnt++){
 			id=this.skillsArray[cnt].skillId;			
 			this.skillsArray[cnt].skillRating=0;
 			for(var count=0;count<this.associate.associateSkills.length;count++){
 				var skilId=this.associate.associateSkills[count].skill.skillId;				
-				if(skilId==id){
+				if(skilId==id &&  this.associate.associateSkills[count].skillRating>0){
 					this.skillsArray[cnt].skillRating=this.associate.associateSkills[count].skillRating;						
 					break;		
 				}
@@ -119,48 +138,90 @@ export class AddEditAssociateComponent implements OnInit {
 	}
 	
 	//call service to save Associate
-    addEditAssociate(associateForm: NgForm): void {	
-		console.log("this.isEditAssociate:"+this.isEditAssociate);
-		if(this.associate.associateId==null || this.associate.associateId==null){
+    addEditAssociate(): void {	
+		//console.log("this.isEditAssociate:"+this.isEditAssociate);
+		/*if(this.associate.associateId==null || this.associate.associateId==null){
 				this.errorMsg="Associate Id is mandatory";
 				return;
-		}	
+		}	*/
 		if(this.associate.name==null || this.associate.name==null){
 				this.errorMsg="Associate Name is mandatory";
 				return;
 		}
 			
 		if(this.associate!=null){
-			this.associate.associateStatus=associateForm.controls['associateStatus'].value;
-			this.associate.associateLevel=associateForm.controls['associateLevel'].value	
-			this.associate.gender= associateForm.controls['gender'].value;	
+			//this.associate.associateStatus=associateForm.controls['associateStatus'].value;
+			//console.log('associateStatus..'+this.associate.associateStatus);
+			if(this.associate.associateStatus=="Green"){
+				this.associate.statusGreen="Y";
+				this.associate.statusBlue="N";
+				this.associate.statusRed="N";
+			}
+			if(this.associate.associateStatus=="Blue"){
+				this.associate.statusGreen="N";
+				this.associate.statusBlue="Y";
+				this.associate.statusRed="N";
+			}
+			if(this.associate.associateStatus=="Red"){
+				this.associate.statusGreen="N";
+				this.associate.statusBlue="N";
+				this.associate.statusRed="Y";
+			}
+		    console.log('this.associate.statusGreen..'+this.associate.statusGreen);
+			//this.associate.associateLevel=associateForm.controls['associateLevel'].value	
+			if(this.associate.associateLevel=="L1"){
+				this.associate.level1=this.associate.associateLevel;
+			}
+			if(this.associate.associateLevel=="L2"){
+				this.associate.level2=this.associate.associateLevel;
+			}
+			if(this.associate.associateLevel=="L3"){
+				this.associate.level3=this.associate.associateLevel;
+			}
+			//this.associate.gender= associateForm.controls['gender'].value;	
 		}
 		
 	    if(this.skillsArray!=null){			
 			let associateSkills:AssociateSkills;			
 			this.indexArr= 0;
-			this.associateSkillsArray=new Array(this.skillsArray.length);
+			this.associateSkillsArray=new Array();
 			for (let sk of this.skillsArray) {				
 				this.associateSkills=new AssociateSkills();
 				this.skill=new Skill();
 				this.skill.skillId=sk.skillId;
 				this.skill.skillName=sk.skillName;				
 				this.associateSkills.skill=this.skill;
-				this.associateSkills.skillRating=sk.skillRating;				
-				this.associateSkillsArray[this.indexArr]=this.associateSkills;
-				this.indexArr=this.indexArr+1;		
+				this.associateSkills.skillRating=sk.skillRating;
+                if(!this.isEditAssociate){
+					this.associateSkills.associateSkillId=0;
+				}else{
+					if(this.associate.associateSkills[this.indexArr]!=null){
+						this.associateSkills.associateSkillId
+						=this.associate.associateSkills[this.indexArr].associateSkillId;
+				  	 }else{
+					   this.associateSkills.associateSkillId=0;
+					  //console.log("rating.."+this.associateSkills.skillRating);
+				   	}
+				}
+				if(this.associateSkills.skillRating>0){
+				   this.associateSkillsArray[this.indexArr]=this.associateSkills;
+				   this.indexArr=this.indexArr+1;	
+				}
+					
 			}
 			if(this.associate!=null)
 				this.associate.associateSkills=this.associateSkillsArray;
 			    console.log("associateSkillsArray:"+this.associateSkillsArray);			
 		}
-		console.log('Associate data'+JSON.stringify(this.associate));
+		//console.log('Associate data'+JSON.stringify(this.associate));
 		
 		this.errorMsg=null;
-		if(!this.isEditAssociate){			 									
+		if(!this.isEditAssociate){	
+			this.associate.associateId=0;		 									
 			this.associateService.saveAssociate(this.associate)
 				  .subscribe(associate => {				   
 					  console.log("Associate Saved"+this.associate.associateId);
+					   this.successMsg="Associate details Added successfully";	
 					 //this.router.navigate(['/skillsDashboard/']);
 			 });
 			 

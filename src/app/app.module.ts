@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ButtonsModule,ModalModule} from 'ngx-bootstrap';
 
 import { ChartsModule } from 'ng2-charts';
@@ -50,7 +50,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,FormsModule, ChartsModule,HttpModule,ButtonsModule.forRoot(),
-    HttpClientModule, MatSliderModule,BrowserAnimationsModule,
+    HttpClientModule, MatSliderModule,BrowserAnimationsModule,ReactiveFormsModule,
 	RouterModule.forRoot(appRoutes,{ enableTracing: true })
   ],
   providers: [AssociateService,SkillsService],

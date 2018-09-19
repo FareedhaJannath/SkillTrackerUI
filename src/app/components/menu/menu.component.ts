@@ -7,17 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  public menuselected;
+ // public menuselected;
   constructor() { 
     
   }
 
   ngOnInit() {
-     this.menuselected = "Home";
+    // this.menuselected = "Home";
   }
 
    menuSelect(menu:string){ 
-      this.menuselected ==menu;   
+     // this.menuselected ==menu;   
    }
 
 }

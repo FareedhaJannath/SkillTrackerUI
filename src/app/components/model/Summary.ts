@@ -2,16 +2,16 @@ import {SkillChart} from "./SkillChart";
 
 export class Summary
 {
-    public RegisteredCandidates :number;
-    public FemaleCandidates :number;
-    public MaleCandidates :number;
-    public FresherCandidates :number;
-    public RatedCandidates :number;
-    public MaleRatedCandidates :number;
-    public FemaleRatedCandidates :number;
-    public L1RatedCandidates :number;
-    public L2RatedCandidates :number;
-    public L3RatedCandidates :number;
+    public associatesCount :number;
+    public femalePercentage :number;
+    public malePercentage :number;
+    public freshersPercentage :number;
+    public ratedAssociatesCount :number;
+    public maleRatedPercentage :number;
+    public femaleRatedPercentage :number;
+    public level1Percentage :number;
+    public level2Percentage :number;
+    public level3Percentage :number;
     public skillChart : SkillChart;    
     
 }

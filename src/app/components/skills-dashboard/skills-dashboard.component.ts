@@ -28,7 +28,10 @@ export class SkillsDashboardComponent implements OnInit {
     }  
 	private getSummaryDetails()
 	{
-		this.summary = new Summary();
+    this.associateService.getAllAssociateSummary().subscribe(data =>{
+        this.summary = data;
+    });
+	/*	this.summary = new Summary();
 		this.summary.RegisteredCandidates=2;
 		this.summary.FemaleCandidates=0;
 		this.summary.MaleCandidates=2;
@@ -38,7 +41,7 @@ export class SkillsDashboardComponent implements OnInit {
 		this.summary.FemaleRatedCandidates=1;
 		this.summary.L1RatedCandidates=1;
 		this.summary.L2RatedCandidates=1;
-		this.summary.L3RatedCandidates=1;		
+		this.summary.L3RatedCandidates=1;		*/
 		this.formatChartData();
     }
 
